@@ -29,12 +29,12 @@ public class lightUp : MonoBehaviour {
 		//this.GetComponentInChildren<ParticleSystem>().enableEmission = true; //Turn on particle emmission  =====================
 		this.GetComponent<GvrAudioSource>().Play();  
 
-		GameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
+		//GameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
 
 
 	}
 	public void playerSelection() {
-		GameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
+		//GameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
 		this.GetComponent<GvrAudioSource>().Play();
 	}
 	public void aestheticReset() {

@@ -6,7 +6,7 @@ public class GameLogic : MonoBehaviour {
 	public GameObject player;
 	public GameObject eventSystem;
 	public GameObject startUI, restartUI;
-	public GameObject startPoint, playPoint, restartPoint;
+	public GameObject playPoint;
 	public GameObject[] puzzleSpheres; //An array to hold our puzzle spheres
 	public GameObject[] paths; // An array of paths
 
@@ -34,7 +34,7 @@ public class GameLogic : MonoBehaviour {
 	}
 
 
-	public void playerSelection(GameObject sphere) {
+	/*public void playerSelection(GameObject sphere) {
 		if(playerWon != true) { //If the player hasn't won yet
 			int selectedIndex=0;
 			//Get the index of the selected object
@@ -46,7 +46,7 @@ public class GameLogic : MonoBehaviour {
 			}
 			//solutionCheck (selectedIndex);//Check if it's correct
 		}
-	}
+	}*/
 
 	/*public void solutionCheck(int playerSelectionIndex) { //We check whether or not the passed index matches the solution index
 		if (playerSelectionIndex == puzzleOrder [currentSolveIndex]) { //Check if the index of the object the player passed is the same as the current solve index in our solution array
@@ -72,7 +72,6 @@ public class GameLogic : MonoBehaviour {
 		} else {
 			movePath (currentPathArrayIndex + 1);
 		}
-		//iTween.MoveTo (player, paths[1].transform.position, 5f);
 		CancelInvoke ("displayPattern");
 		//InvokeRepeating("displayPattern", 3, puzzleSpeed); //Start running through the displaypattern function
 		//currentSolveIndex = 0; //Set our puzzle index at 0
@@ -116,7 +115,7 @@ public class GameLogic : MonoBehaviour {
 	public void resetPuzzle() { //Reset the puzzle sequence
 		iTween.MoveTo (player, 
 			iTween.Hash (
-				"position", startPoint.transform.position, 
+			"position", paths[0].transform.position, 
 				"time", 4, 
 				"easetype", "linear",
 				"oncomplete", "resetGame", 
@@ -144,7 +143,7 @@ public class GameLogic : MonoBehaviour {
 	public void puzzleSuccess() { //Do this when the player gets it right
 		iTween.MoveTo (player, 
 			iTween.Hash (
-				"position", restartPoint.transform.position, 
+			"position", paths[-1].transform.position, 
 				"time", 2, 
 				"easetype", "linear",
 				"oncomplete", "finishingFlourish", 
